@@ -3,30 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <title>Deploy ML model using Heroku</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./mycss.css">
 </head>
-
 <body>
- <div class="login">
-  <h1>Welcome to Loan classifier</h1>
-  
-  <h1>Please input 1 if information is same as the title box, else input 0</h1>
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Gender_Male" placeholder="Gender Male" required="required" />
-        <input type="text" name="Married_Yes" placeholder="Married Yes" required="required" />
+  <div class="container">
+    <div class="login">
+      <h1 style="text-align: center;">Welcome to Loan classifier</h1>
+      
+        <form action="{{ url_for('predict')}}"method="post">
+          <br>
+          <div class="mx-auto col-md-12">
+              <label for="gender"> Gender:</label>
+              <select id="gender" name="Gender_Male">
+                <option value=1>Male</option>
+                <option value=0>Female</option>
+              </select>
+              <label for="married" style="margin-left: 30px;"> Married:</label>
+              <select id="married"  name="Married_Yes">
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+              </select>
+              <label for="dependents" style="margin-left: 30px;"> Dependents:</label>
+              <select id="dependents" name="Dependents_2">
+                <option value=1>2</option>
+                <option value=0>Other</option>
+              </select>
+              <label for="credit" style="margin-left: 30px;"> Credit History:</label>
+              <select id="credit" name="Credit_History_1">
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+              </select>
+              <label for="property" style="margin-left: 30px;"> Property Area:</label>
+              <select id="property" name="Property_Area_Semiurban">
+                <option value=1>Semiurban</option>
+                <option value=0>Other</option>
+              </select>
+          </div>
         <br><br>
-		<input type="text" name="Dependents_2" placeholder="Dependents_2" required="required" />
-    <input type="text" name="Credit_History_1.0" placeholder="Credit_History_1.0" required="required" />
-    <input type="text" name="Property_Area_Semiurban" placeholder="Property_Area_Semiurban" required="required" />
-    <br><br>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
-    </form>
-
-   <br>
-   <br>
-   {{ output }}
-
- </div>
-
+            <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+        </form>
+    
+       <br>
+       <br>
+       {{ output }}
+    
+     </div>
+  </div>
+ <script>
+  function myFunction() {
+    console.log(document.getElementById("gender").value);
+    // document.getElementById("result").innerHTML = document.getElementById("gender").value;
+  }
+  </script>
 
 </body>
 </html>
